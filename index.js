@@ -26,15 +26,17 @@ class CountdownTimer {
                 return
             }
 
-            days.textContent = Math.floor(time / (1000 * 60 * 60 * 24));
-            hours.textContent = Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            mins.textContent = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
-            secs.textContent = Math.floor((time % (1000 * 60)) / 1000);
+            days.textContent = this.pad(Math.floor(time / (1000 * 60 * 60 * 24)));
+            hours.textContent = this.pad(Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+            mins.textContent = this.pad(Math.floor((time % (1000 * 60 * 60)) / (1000 * 60)));
+            secs.textContent = this.pad(Math.floor((time % (1000 * 60)) / 1000));
         }, 1000)
     }
 
+    pad(value) {
+        return String(value).padStart(2, '0');
+    }
 };
-
 
 
 const timer = new CountdownTimer({
